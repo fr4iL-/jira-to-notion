@@ -13,8 +13,8 @@ class Config:
         config_path = os.path.join(script_dir, self._CONFIG_FILE)
         config_file = open(config_path, "r")
         json_data = json.load(config_file)
-        print(json_data)
-        
+        # print(json_data)
+
         # Parse contents
         self.notion_token_v2 = json_data["config"]["notion"]["token_v2"]
         self.notion_page = json_data["config"]["notion"]["page"]
