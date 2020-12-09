@@ -38,17 +38,19 @@ class NotionManager:
         row.name = title
         assignee = issue.fields.assignee.displayName
         reporter = issue.fields.reporter.displayName
-        row.set_property('Assignee', assignee.replace('.', ' '))
-        row.set_property('Reporter', reporter.replace('.', ' '))
         row.set_property('Updated by', 'Albert')
 
         # TODO : switch for others (long term, action for close, etc..)
         status = issue.fields.customfield_10010.currentStatus.status
-        # status.replace('Waiting', 'w')
-        # if (status == 'Waiting for support') {
-        #     status = 'w for support'
-        # } else if (status == 'Waiting for customer') {
-        #     status = 'w for customer'
-        # }
         row.set_property('Status', status.replace('Waiting', 'w'))
         row.set_property('Link', issue.fields.customfield_10010._links.agent)
+
+        try:
+            row.set_property('Assignee', assignee.replace('.', ' '))
+        except Exception:
+            print('Cannot update Assignee field')
+
+        try:
+            row.set_property('Reporter', reporter.replace('.', ' '))
+        except Exception:
+            print('Cannot update Reporter field')
