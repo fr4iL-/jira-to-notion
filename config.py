@@ -5,7 +5,7 @@ import os
 
 class Config:
     """ Configuration class """
-    _CONFIG_FILE = "C:/Users/alber/Documents/GitHub/jira-to-notion/config.json" # Check sample_config.txt
+    _CONFIG_FILE = "config.json" # Check readme.md
 
     def __init__(self):
         # Read text file
